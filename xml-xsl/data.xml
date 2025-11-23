@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="students.xsd">
+  <student>
+    <name>John</name>
+    <age>20</age>
+  </student>
+  <student>
+    <name>Emma</name>
+    <age>22</age>
+  </student>
+</students>

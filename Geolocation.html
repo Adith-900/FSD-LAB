@@ -1,0 +1,49 @@
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;      
+      display: flex;
+      flex-direction: column;
+      align-items: center;   /* centers horizontally */
+      padding-top: 50px;     /* space from top */
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      margin-top: 20px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+<button onclick="getLocation()">Get Location</button>
+<p id="output"></p>
+
+<script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    document.getElementById("output").innerHTML = "Geolocation is not supported.";
+  }
+}
+
+function showPosition(position) {
+  document.getElementById("output").innerHTML =
+    "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+<canvas id="myCanvas" width="200" height="100"></canvas>
+<script>
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
+ctx.fillStyle = "#FF0000";
+ctx.fillRect(10, 10, 150, 75);
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJAX Demo</title>
+</head>
+<body>
+
+<h3>Fetch Data with AJAX</h3>
+<button onclick="loadXML()">XML</button>
+<button onclick="loadJSON()">JSON</button>
+
+<div id="result"></div>
+
+<script>
+function loadXML() {
+  let xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "data.xml", true);
+  xhttp.onload = function() {
+    let xml = this.responseXML;
+    let s = xml.getElementsByTagName("student");
+    let out = "";
+    for(let i=0;i<s.length;i++){
+      out += s[i].getElementsByTagName("name")[0].textContent + " : " +
+             s[i].getElementsByTagName("age")[0].textContent + "<br>";
+
+    }
+    document.getElementById("result").innerHTML = out;
+  }
+  xhttp.send();
+}
+
+function loadJSON() {
+  let xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "data.json", true);
+  xhttp.onload = function() {
+    let data = JSON.parse(this.responseText);
+    let out = "";
+    data.students.forEach(s => out += s.name + " : " + s.age + "<br>");
+    document.getElementById("result").innerHTML = out;
+  }
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
